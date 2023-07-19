@@ -6,27 +6,22 @@ export default {
     {
       title: 'Username',
       name: 'username',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Email',
       name: 'email',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Image',
       name: 'image',
-      type: 'string'
-    },
-    {
-      title: 'Username',
-      name: 'username',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Following',
@@ -35,10 +30,8 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{
-            type: 'user'
-          }]
-        }
+          to: [{type: 'user'}],
+        },
       ],
       validation: (Rule) => Rule.unique(),
     },
@@ -49,10 +42,8 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{
-            type: 'user'
-          }]
-        }
+          to: [{type: 'user'}],
+        },
       ],
       validation: (Rule) => Rule.unique(),
     },
@@ -63,11 +54,10 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{
-            type: 'post'
-          }]
-        }
-      ]
+          to: [{type: 'post'}],
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
     },
-  ]
+  ],
 }
