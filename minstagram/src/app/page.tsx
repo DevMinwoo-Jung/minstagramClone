@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <h1 className="text-purple">Minstagram</h1>
+    <section>Minstagram</section>
   )
 }

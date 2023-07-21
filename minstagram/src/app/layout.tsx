@@ -1,5 +1,6 @@
 import './globals.css'
 import { Open_Sans } from 'next/font/google';
+import Header from './header/page';
 const openSans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={openSans.className}>
-      <body>{children}</body>
+      <body>
+        <Header/>
+        {children}
+      </body>
     </html>
   )
 }
