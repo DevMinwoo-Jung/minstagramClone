@@ -16,8 +16,8 @@ export default function Header() {
       </div>
       <div className='mr-2'>
         <span className='ml-2' onClick={() => router.push('/')}>Home</span>
-        <span className='ml-2' onClick={() => router.push('/about')}>Profile</span>
-        <span className='ml-2' onClick={() => router.push('/contact')}>Contact</span>
+        <span className='ml-2' onClick={() => router.push('/search')}>Profile</span>
+        <span className='ml-2' onClick={() => router.push('/newPost')}>Contact</span>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
+import Header from '@/components/Header';
 import './globals.css'
 import { Open_Sans } from 'next/font/google';
-import Header from './header/page';
+
 const openSans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,9 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={openSans.className}>
-      <body>
+      <body className='flex flex-col w-full mx-auto'>
         <Header/>
-        {children}
+        <main className='grow'>{children}</main>
       </body>
     </html>
   )
