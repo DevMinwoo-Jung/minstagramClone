@@ -1,43 +1,52 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
-import { usePathname } from 'next/navigation'
+'use client';
+import Link from 'next/link'
 import React from 'react'
-import { AiOutlineHome } from 'react-icons/ai';
-import { AiFillHome } from 'react-icons/ai';
-import { BsPlusSquare } from 'react-icons/bs';
-import { BsPlusSquareFill } from 'react-icons/bs';
-import { RiSearchLine } from 'react-icons/ri';
-import { RiSearchFill } from 'react-icons/ri';
+import HomeIcon from './ui/icons/HomeIcon'
+import HomeFilledIcon from './ui/icons/HomeFilledIcon'
+import SearchIcon from './ui/icons/SearchIcon'
+import SearchFillIedIcon from './ui/icons/SearchFillIedIcon'
+import NewPostIcon from './ui/icons/NewPostIcon'
+import NewPostIconFill from './ui/icons/NewPostIconFill'
+import { usePathname } from 'next/navigation';
 
-export default function Header() {
+const menu = [
+  {
+    href: '/', icon: <HomeIcon/>, clcikedIcon: <HomeFilledIcon/>
+  },
+  {
+    href: '/search', icon: <SearchIcon/>, clcikedIcon: <SearchFillIedIcon/>
+  },
+  {
+    href: '/newPost', icon: <NewPostIcon/>, clcikedIcon: <NewPostIconFill/>
+  }
+]
 
-  const router = useRouter();
+const Header = () => {
+
   const pathName = usePathname();
 
-  const isLogin = false;
-
   return (
-    <div className='flex w-full justify-between cursor-pointer sticky'>
-      <div className='ml-2'>
-        <span className='text-1xl font-extrabold' onClick={() => router.push('/')}>
-          Minstagram
-        </span>
-      </div>
-      <div className='w-60 mr-2 flex'>
-        {
-          pathName === '/' ? <AiFillHome className='ml-2 w-12 text-2xl mt-2'></AiFillHome> : <AiOutlineHome className='ml-2 w-12 text-2xl mt-2' onClick={() => router.push('/')}></AiOutlineHome>
-        }
-        {
-          pathName === '/search' ? <BsPlusSquareFill className='ml-2 w-12 text-2xl mt-2'></BsPlusSquareFill> : <BsPlusSquare className='ml-2 w-12 text-2xl mt-2' onClick={() => router.push('/search')}></BsPlusSquare>
-        }
-        {
-          pathName === '/newPost' ? <RiSearchFill className='ml-2 w-12 text-2xl mt-2'></RiSearchFill> : <RiSearchLine className='ml-2 w-12 text-2xl mt-2' onClick={() => router.push('/newPost')}></RiSearchLine>
-        }
-        {
-          isLogin ? <button className='w-16 h-8'>Sign in</button> : <button className='w-16 h-8'>Sign up</button>
-        }
-      </div>
+    <div>
+      <Link href={'/'}>
+        <h1>Minstagram</h1>
+      </Link>
+      <nav>
+        <ul>
+          {
+            menu.map((icon) => {
+              return (
+                <Link key={Math.random()} href={icon.href}>
+                  {
+                    pathName === icon.href ? icon.clcikedIcon : icon.icon
+                  }
+                </Link>
+              )        
+            })
+          }
+        </ul>
+      </nav>
     </div>
   )
 }
+
+export default Header
