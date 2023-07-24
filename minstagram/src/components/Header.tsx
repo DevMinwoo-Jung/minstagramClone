@@ -8,6 +8,7 @@ import SearchFillIedIcon from './ui/icons/SearchFillIedIcon'
 import NewPostIcon from './ui/icons/NewPostIcon'
 import NewPostIconFill from './ui/icons/NewPostIconFill'
 import { usePathname } from 'next/navigation';
+import ColorButton from './ui/ColorButton';
 
 const menu = [
   {
@@ -26,12 +27,12 @@ const Header = () => {
   const pathName = usePathname();
 
   return (
-    <div>
+    <div className='flex justify-between items-center px-6'>
       <Link href={'/'}>
-        <h1>Minstagram</h1>
+        <h1 className='text-3xl font-bold'>Minstagram</h1>
       </Link>
       <nav>
-        <ul>
+        <ul className='flex gap-4 items-center p-4'>
           {
             menu.map((icon) => {
               return (
@@ -43,6 +44,7 @@ const Header = () => {
               )        
             })
           }
+          <ColorButton text='Sign in' onClick={() => {}} />
         </ul>
       </nav>
     </div>
