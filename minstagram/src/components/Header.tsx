@@ -10,6 +10,8 @@ import NewPostIconFill from './ui/icons/NewPostIconFill'
 import { usePathname } from 'next/navigation';
 import ColorButton from './ui/ColorButton';
 
+import { useSession, signIn, signOut } from "next-auth/react"
+
 const menu = [
   {
     href: '/', icon: <HomeIcon/>, clcikedIcon: <HomeFilledIcon/>
@@ -23,7 +25,7 @@ const menu = [
 ]
 
 const Header = () => {
-
+  const { data: session } = useSession()
   const pathName = usePathname();
 
   return (
@@ -44,7 +46,10 @@ const Header = () => {
               )        
             })
           }
-          <ColorButton text='Sign in' onClick={() => {}} />
+          {
+            session ? <ColorButton text='Sign out' onClick={() => signOut()} />
+            : <ColorButton text='Sign in' onClick={() => signIn()} />
+          }
         </ul>
       </nav>
     </div>
