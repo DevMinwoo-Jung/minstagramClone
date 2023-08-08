@@ -3,14 +3,14 @@ import SideBar from "@/components/SideBar";
 export default function Home() {
   return (
     <section>
-      <div className="w-3/4 h-5/6 m-auto flex">
-        <div className="flex">
+      <div className="w-full mx-auto flex grid-cols-2 gap-4">
+        <div className="flex-1">
           <div>
             FollowingBar
             PostList
           </div>
         </div>
-        <div className="ml-12">
+        <div className="w-1/3 mw-1/3">
           <SideBar/>
         </div>
       </div>

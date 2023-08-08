@@ -13,7 +13,7 @@ export default function Avatar(props:Props) {
   let { needBg, size, image } = props;
 
   needBg === 'yes' ? `` : '';
-  size === 'big' ? size = `w-18 h-18` : size = 'w-9 h-9';
+  size === 'big' ? size = `w-14 h-14` : size = 'w-9 h-9';
 
   return (
     <div className={`${size} rounded-full bg-gradient-to-bl from-white`}>
