@@ -1,19 +1,25 @@
+import Following from "@/components/Following";
+import PostList from "@/components/PostList";
 import SideBar from "@/components/SideBar";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+
+export default async function Home() {
+
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+
+  if (!user) {
+    redirect('/auth/siginin');
+  }
+
   return (
     <section>
-      <div className="w-full mx-auto flex grid-cols-2 gap-4">
-        <div className="flex-1">
-          <div>
-            FollowingBar
-            PostList
-          </div>
-        </div>
-        <div className="w-1/3 mw-1/3">
-          <SideBar/>
-        </div>
-      </div>
+      <Following/>
+      <PostList/>
+      <SideBar user={user}/>
     </section>
   )
 }
