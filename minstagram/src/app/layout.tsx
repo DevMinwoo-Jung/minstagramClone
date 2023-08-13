@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import './globals.css'
 import { Open_Sans } from 'next/font/google';
 import AuthContext from '@/context/AuthContext';
+import { SWRConfig } from 'swr';
 
 const openSans = Open_Sans({ subsets: ['latin'] })
 
@@ -20,7 +21,11 @@ export default function RootLayout({
       <body className='flex flex-col w-full max-w-screen-2xl mx-auto'>
         <AuthContext>
           <Header/>
-          <main className='grow'>{children}</main>
+          <main className='grow'>
+            <SWRConfig>
+              {children}
+            </SWRConfig>
+          </main>
         </AuthContext>
       </body>
     </html>
