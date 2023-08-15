@@ -1,4 +1,4 @@
-import Follower from "@/components/Follower";
+import FollowingBar from "@/components/FollowingBar";
 import PostList from "@/components/PostList";
 import SideBar from "@/components/SideBar";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <section className='w-full flex flex-col md:flex-row max-w-[850px] p-4'>
       <div className='w-full basis-3/4'>
-        <Follower />
+        <FollowingBar />
         <PostList />
       </div>
       <div className='basis-1/4'>

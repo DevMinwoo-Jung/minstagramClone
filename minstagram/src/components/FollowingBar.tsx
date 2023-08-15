@@ -8,8 +8,8 @@ const fetcher = async (url:string) => {
 };
 
 
-export default function Follower() {
-  const { data, isLoading, error } = useSWR('/api/user', fetcher);
+export default function FollowingBar() {
+  const { data, isLoading, error } = useSWR('/api/me', fetcher);
 
   return (
     <div className='w-full h-32'>
