@@ -1,16 +1,5 @@
-import useSWR from "swr";
-
-const fetcher = async (...args: Parameters<typeof fetch>) => {
-  const res = await fetch(...args);
-  return res.json();
+export default (req, res) => {
+  // Simulate fetching user data
+  const userData = { username: 'example_user' };
+  res.status(200).json(userData);
 };
-
-export function useUser() {
-  const { data, error, isLoading } = useSWR("/api/user/", fetcher);
-
-  return {
-    user: data,
-    isLoading,
-    isError: error,
-  };
-}
