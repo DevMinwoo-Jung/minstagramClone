@@ -22,7 +22,9 @@ export default function RootLayout({
     <html lang="en" className={openSans.className}>
       <body className='flex flex-col w-full max-w-screen-2xl mx-auto'>
         <AuthContext>
-          <Header/>
+          <header className='sticky top-0 bg-white z-10 border-b'>
+            <Header/>
+          </header>
           <main className='w-full flex justify-center bg-neutral-50 min-h-full'>
             <SWRConfigContext>
               {children}
