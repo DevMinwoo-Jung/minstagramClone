@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className='flex flex-col w-full max-w-screen-2xl mx-auto'>
         <AuthContext>
           <Header/>
-          <main className='grow'>
+          <main className='w-full flex justify-center bg-neutral-50 min-h-full'>
             <SWRConfigContext>
               {children}
             </SWRConfigContext>
