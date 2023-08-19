@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import PropagateLoader from "react-spinners/PropagateLoader"
 import Link from 'next/link';
 import Avatar from './ui/Avatar';
+import ScrollableBar from './ui/ScrollableBar';
 
 const fetcher = async (url:string) => {
   const res = await fetch(url);
@@ -30,21 +31,22 @@ export default function FollowingBar() {
       )}
       {
         users && users.length > 0 && 
-        <ul className='flex w-full gap-2'>
-          {
-            users.map(({image, username})=> 
-              <li key={username}>
-                <Link 
-                key={username}
-                className='flex flex-col items-center w-20'
-                href={`/user/${username}`}>
-                  <Avatar image={image} highlight/>
-                    <p className='w-full text-sm text-center text-ellipsis overflow-hidden'>{username}</p>  
-                </Link>
-              </li>
-            )
-          }
-        </ul>
+          <ScrollableBar>
+            {
+              users.map(({image, username})=> {
+                return (
+                  <Link 
+                  key={username}
+                  className='flex flex-col items-center w-20'
+                  href={`/user/${username}`}>
+                    <Avatar image={image} highlight/>
+                      <p className='w-full text-sm text-center text-ellipsis overflow-hidden'>{username}</p>  
+                  </Link>
+                )
+              }
+              )
+            }
+          </ScrollableBar>
       }
     </section>
   )
