@@ -7,8 +7,9 @@ import { client } from "./sanity";
 //   return builder.image(source)
 // }
 
-export async function getPosts(userName: string){
+export async function getPosts(userName: string) {
+  console.log(userName)
   return client.fetch(`
-    *[_type == "posts" && author.ref in *[type=="auhor" && name==${userName}].id ]{...}
+    *[_type == "post"]
   `);
 }

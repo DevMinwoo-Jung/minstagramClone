@@ -1,3 +1,4 @@
+'use client';
 import { PostType } from '@/types/model/post';
 import React from 'react'
 import useSWR from 'swr';
@@ -9,7 +10,7 @@ const fetcher = async (url:string) => {
 
 export default function PostList() {
 
-  const { data, isLoading, error } = useSWR<PostType>('/api/me', fetcher);
+  const { data, isLoading, error } = useSWR<PostType>('/api/posts', fetcher);
 
   console.log(data)
 
