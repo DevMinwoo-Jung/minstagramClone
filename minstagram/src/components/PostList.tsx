@@ -12,11 +12,12 @@ const fetcher = async (url:string) => {
 
 export default function PostList() {
 
-  const { data, isLoading, error } = useSWR<FullPost>('/api/posts', fetcher);
+  const { data, isLoading, error } = useSWR<FullPost[]>('/api/posts', fetcher);
 
-  const post = data;
+  const posts = data;
 
-  console.log(post)
+  console.log(posts)
+  console.log(typeof(posts))
 
   return (
     <section>
@@ -25,12 +26,16 @@ export default function PostList() {
         ((!post) && <p>${`you don"t have following`}</p>
       )} */}
       {
-        data && 
-        (
-          <div>
-            <Post/>
-          </div>
-        )
+        posts &&
+        <div>
+          {
+            posts.map((post)=> {
+              return (
+                <Post key={post.id} post={post}/>
+              )
+            })
+          }
+        </div>
       }
     </section>
   )

@@ -1,9 +1,19 @@
+import { FullPost } from '@/types/model/post'
 import React from 'react'
 
-export default function Post() {
+type Props = {
+  post: FullPost
+}
+
+export default function Post(props:Props) {
+  
+  const { text } = props.post
+
   return (
     <div>
-      
+      {
+        text
+      }
     </div>
   )
 }
