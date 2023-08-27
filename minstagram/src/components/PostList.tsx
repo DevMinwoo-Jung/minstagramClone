@@ -27,7 +27,7 @@ export default function PostList() {
       )} */}
       {
         posts &&
-        <div>
+        <>
           {
             posts.map((post)=> {
               return (
@@ -35,7 +35,7 @@ export default function PostList() {
               )
             })
           }
-        </div>
+        </>
       }
     </section>
   )
