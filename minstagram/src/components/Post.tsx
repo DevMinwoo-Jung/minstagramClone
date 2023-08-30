@@ -4,6 +4,7 @@ import Avatar from './ui/Avatar'
 import Smile from './ui/icons/Smile'
 import EmptyHeart from './ui/icons/EmptyHeart copy'
 import BookMarks from './ui/icons/BookMarks'
+import Likes from './ui/Likes'
 
 type Props = {
   post: FullPost
@@ -14,7 +15,7 @@ export default function Post(props:Props) {
   const { text, id, userImage, username, image, createdAt,likes, comments } = props.post
 
   return (
-    <section className='m-auto w-2/3 mt-6 block rounded-md border-2'>
+    <section className='m-auto w-2/3 mt-4 mb-4 block rounded-md border-2'>
       <div className='w-full flex ml-3 items-center mt-4'>
         <Avatar image={userImage}/>
         <span className='ml-6'>{username}</span>
@@ -28,7 +29,7 @@ export default function Post(props:Props) {
           <span className='mr-6'><BookMarks/></span>
         </div>
         <div className='block mt-3'>
-          <p className='ml-6'>1 Likes</p>
+          <p className='ml-6'><Likes likes={likes}/></p>
           <p className='ml-6 mt-2 mb-2'>{createdAt} ago</p>
           <div className='ml-6 mt-3'>
             <span className='font-extrabold mr-4'>{username}</span>
