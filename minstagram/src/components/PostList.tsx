@@ -21,10 +21,10 @@ export default function PostList() {
 
   return (
     <section>
-      {/* {
+      {
         isLoading ? ( <PropagateLoader size={8} color='red'/> ):
-        ((!post) && <p>${`you don"t have following`}</p>
-      )} */}
+        ((!posts) && <p>${`you don"t have following`}</p>
+      )}
       {
         posts &&
         <>
