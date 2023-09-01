@@ -22,8 +22,12 @@ export default function PostList() {
   return (
     <section>
       {
-        isLoading ? ( <PropagateLoader size={8} color='red'/> ):
-        ((!posts) && <p>${`you don"t have following`}</p>
+        isLoading ? ( 
+          <div className='text-center m-auto'>
+            <PropagateLoader size={8} color='red'/> 
+          </div>
+        ):
+        ((!posts) && <p className='text-center'>${`you don"t have following`}</p>
       )}
       {
         posts &&
