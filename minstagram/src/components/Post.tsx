@@ -5,14 +5,17 @@ import Smile from './ui/icons/Smile'
 import EmptyHeart from './ui/icons/EmptyHeart copy'
 import BookMarks from './ui/icons/BookMarks'
 import Likes from './ui/Likes'
+import { urlFor } from '@/service/sanity'
+import Image from 'next/image'
 
 type Props = {
-  post: FullPost
+  post: FullPost;
+  priority?: boolean;
 }
 
-export default function Post(props:Props) {
+export default function Post(props:Props, priority = false) {
   
-  const { text, id, userImage, username, image, createdAt,likes, comments } = props.post
+  const { text, id, userImage, username, image, createdAt,likes, comments,  } = props.post
 
   return (
     <section className='m-auto w-2/3 mt-4 mb-4 block rounded-md border-2'>
@@ -21,7 +24,17 @@ export default function Post(props:Props) {
         <span className='ml-6'>{username}</span>
       </div>
       <div className='h-96'>
-        <image/>
+        {
+          image &&
+          <Image
+          className='w-full object-cover aspect-square'
+          src={image}
+          alt={`photo by ${username}`}
+          width={500}
+          height={500}
+          priority={priority}
+        />
+        }
       </div>
       <div className='w-full mt-3'>
         <div className='flex justify-between'>

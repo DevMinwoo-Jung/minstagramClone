@@ -12,8 +12,6 @@ export async function GET(request: Request) {
   }
 
   return getPosts(user.username)
-        .then(data => {
-          return NextResponse.json(data)
-        })
+    .then((data) => NextResponse.json(data));
   ;
 }

@@ -1,12 +1,5 @@
-import { SimplePost } from "@/types/model/post";
+import { FullPost } from "@/types/model/post";
 import { client, urlFor } from "./sanity";
-// import imageUrlBuilder from '@sanity/image-url';
-
-// const builder = imageUrlBuilder(client)
-
-// function urlFor(source:string) {
-//   return builder.image(source)
-// }
 
 const simplePostProjection = `
     ...,
@@ -28,5 +21,7 @@ export async function getPosts(userName: string) {
           | order(_createdAt desc){
           ${simplePostProjection}
         }`
-    )
+    ).then((posts) =>
+    posts.map((post: any) => ({ ...post, image: urlFor(post.image) }))
+  );
 }

@@ -1,5 +1,5 @@
 'use client';
-import { FullPost } from '@/types/model/post';
+import { FullPost, SimplePost } from '@/types/model/post';
 import React from 'react'
 import { PropagateLoader } from 'react-spinners';
 import useSWR from 'swr';
@@ -17,11 +17,10 @@ export default function PostList() {
   const posts = data;
 
   console.log(posts)
-  console.log(typeof(posts))
 
   return (
     <section>
-      {
+      {/* {
         isLoading ? ( 
           <div className='text-center m-auto'>
             <PropagateLoader size={8} color='red'/> 
@@ -40,7 +39,7 @@ export default function PostList() {
             })
           }
         </>
-      }
+      } */}
     </section>
   )
 }
