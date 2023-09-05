@@ -12,7 +12,7 @@ const simplePostProjection = `
     "id":_id,
     "createdAt":_createdAt
 `;
-
+// post.author.username -> post.username
 export async function getPosts(userName: string) {
   return client
     .fetch(

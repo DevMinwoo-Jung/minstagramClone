@@ -10,7 +10,7 @@ const fetcher = async (url:string) => {
   return res.json();
 };
 
-export default function PostList() {
+export default function PostListMine() {
 
   const { data, isLoading, error } = useSWR<FullPost[]>('/api/posts', fetcher);
 
@@ -20,7 +20,7 @@ export default function PostList() {
 
   return (
     <section>
-      {/* {
+      {
         isLoading ? ( 
           <div className='text-center m-auto'>
             <PropagateLoader size={8} color='red'/> 
@@ -39,7 +39,7 @@ export default function PostList() {
             })
           }
         </>
-      } */}
+      }
     </section>
   )
 }

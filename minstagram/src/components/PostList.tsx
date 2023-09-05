@@ -1,12 +1,15 @@
 'use client'
+import { SimplePost } from '@/types/model/post';
 import React from 'react'
 import useSWR from 'swr';
 
 export default function PostList() {
 
-  const {data, isLoading: loading} = useSWR('/api/posts');
+  const {data: posts, isLoading: loading} = useSWR<SimplePost[]>('/api/posts');
 
   return (
-    <div>PostList</div>
+    <ul>
+      {posts && posts.map((post:SimplePost)=> <li key={post.id}>{post.text}</li>)}
+    </ul>
   )
 }
