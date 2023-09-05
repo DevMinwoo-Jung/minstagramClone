@@ -1,4 +1,4 @@
-import { FullPost } from "@/types/model/post";
+import { FullPost, SimplePost } from "@/types/model/post";
 import { client, urlFor } from "./sanity";
 
 const simplePostProjection = `
@@ -22,6 +22,6 @@ export async function getPosts(userName: string) {
           ${simplePostProjection}
         }`
     ).then((posts) =>
-    posts.map((post: any) => ({ ...post, image: urlFor(post.image) }))
+    posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
   );
 }
