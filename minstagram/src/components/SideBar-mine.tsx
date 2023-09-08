@@ -31,7 +31,7 @@ export default function SideBar() {
             user && 
             <div className='flex'>
               <Link href={`/user/${user.username}`}>
-                <Avatar image={user.image} size='big' needBg='no'/>
+                <Avatar image={user.image} size='large' highlight={false}/>
               </Link>
               <div className='block ml-6'>
                 <p className='font-extrabold'>{user.email}</p>
