@@ -4,6 +4,7 @@ import React from 'react'
 import { GridLoader } from 'react-spinners';
 import useSWR from 'swr';
 import PostListCard from './PostListCard';
+import GridSpinner from './ui/GridSpinner';
 
 export default function PostList() {
 
@@ -14,7 +15,7 @@ export default function PostList() {
       {
         loading && (
           <div>
-            <GridLoader color='red'/>
+            <GridSpinner color='red'/>
           </div>
         )
       }
