@@ -9,9 +9,10 @@ import CommentForm from './CommentForm';
 
 type Props = {
   post: SimplePost;
+  priority?: boolean;
 }
 
-export default function PostListCard({post}:Props) {
+export default function PostListCard({post, priority = false}:Props) {
 
   const { userImage, username, image, createdAt, likes, text } = post;
 
@@ -21,7 +22,7 @@ export default function PostListCard({post}:Props) {
         <Avatar image={userImage} highlight/>
         <span className='text-gray-900 font-bold ml-2'>{username}</span>
       </div>
-      <Image className='w-full object-cover aspect-square' src={image} alt={`photo by ${username}`} width={500} height={500}/>
+      <Image priority={priority} className='w-full object-cover aspect-square' src={image} alt={`photo by ${username}`} width={500} height={500}/>
       <ActionBar
         likes={likes}
         username={username}

@@ -22,7 +22,7 @@ export default function PostList() {
       {
         posts && (
         <ul>
-          {posts.map((post:SimplePost)=> <li key={post.id}><PostListCard post={post}/></li>)}
+          {posts.map((post:SimplePost, index)=> <li key={post.id}><PostListCard post={post} priority={index < 2 ? true : false}/></li>)}
         </ul>
         )
       }
