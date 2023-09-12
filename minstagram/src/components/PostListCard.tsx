@@ -20,7 +20,6 @@ export default function PostListCard({post, priority = false}:Props) {
         <Avatar image={userImage} highlight/>
         <span className='text-gray-900 font-bold ml-2'>{username}</span>
       </div>
-      {/* <Image priority={priority} className='w-full object-cover aspect-square' src={image} alt={`photo by ${username}`} width={500} height={500}/> */}
       <PostImage priority={priority} post={post}/>
       <ActionBar
         likes={likes}
