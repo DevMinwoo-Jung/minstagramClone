@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostListCard({post, priority = false}:Props) {
 
-  const { userImage, username, image, createdAt, likes, text } = post;
+  const { userImage, username, createdAt, likes, text } = post;
 
   return (
     <article className='rounded-lg shadow-md border border-gray-200'>

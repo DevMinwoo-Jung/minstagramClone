@@ -3,7 +3,8 @@ import CommentForm from './CommentForm'
 import ActionBar from './ActionBar'
 import PostImage from './PostImage'
 import Avatar from './ui/Avatar'
-import { SimplePost } from '@/types/model/post'
+import { FullPost, SimplePost } from '@/types/model/post'
+import userSWR from 'swr';
 
 type Props = {
   post: SimplePost;
@@ -13,7 +14,10 @@ type Props = {
 
 export default function PostDetail({post, priority = false, onClose}:Props) {
   
+  const { data } = userSWR<FullPost>(`/api/postDetail/${post.id}`);
   const { userImage, username, createdAt, likes, text } = post;
+
+  console.log(data)
 
   return (
     <article className='rounded-lg shadow-md border border-gray-200 flex'>
