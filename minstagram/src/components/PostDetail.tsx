@@ -14,8 +14,8 @@ type Props = {
 
 export default function PostDetail({post, priority = false, onClose}:Props) {
   
-  const { data } = userSWR<FullPost>(`/api/postDetail/${post.id}`);
-  const { userImage, username, createdAt, likes, text } = post;
+  const { userImage, username, createdAt, likes, text, id } = post;
+  const { data } = userSWR<FullPost>(`/api/postDetail/${id}`);
 
   console.log(data)
 

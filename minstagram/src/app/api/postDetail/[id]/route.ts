@@ -3,7 +3,12 @@ import { getPostDetail } from "@/service/postDetail";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+
+type Context = {
+  params: { id: string };
+};
+
+export async function GET(request: Request, context: Context) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
@@ -11,15 +16,13 @@ export async function GET(request: Request) {
     return new Response('Auth Error', { status: 401 })
   }
 
-   // Access URL parameters from the request object
-  const urlSearchParams = new URL(request.url).searchParams;
-  const postId = urlSearchParams.get("postId"); // Get the postId parameter from the URL
+  console.log(context)
 
-  if (!postId) {
+  if (!context) {
     return new Response("Missing postId parameter", { status: 400 });
   }
 
-  return getPostDetail(postId)
+  return getPostDetail(context.params.id)
     .then((data) => NextResponse.json(data));
   ;
 }
