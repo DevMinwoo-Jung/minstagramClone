@@ -5,6 +5,7 @@ import React from 'react'
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PostDetail from './PostDetail';
+import PostDetailInfo from './PostDetailInfo';
 
 type Props = {
   post: SimplePost;
@@ -15,8 +16,6 @@ export default function PostImage({post, priority = false}:Props) {
   const [showModal, setShowModal] = useState(false);
   const { username, image, id } = post;
   
-  console.log(id)
-
   return (
     <>
       <Image priority={priority} 
@@ -24,8 +23,9 @@ export default function PostImage({post, priority = false}:Props) {
       className='w-full object-cover aspect-square cursor-pointer' 
       src={image!} 
       alt={`photo by ${username}`} width={500} height={500}/>
-      {showModal && createPortal(
-        <PostDetail priority={priority} post={post} onClose={() => setShowModal(false)} />,
+
+            {showModal && createPortal(
+        <PostDetailInfo post={post} onClose={() => setShowModal(false)} />,
         document.body
       )}
     </>
