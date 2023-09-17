@@ -2,8 +2,9 @@
 import { SimplePost } from '@/types/model/post';
 import React from 'react'
 import useSWR from 'swr';
-import PostListCard from './PostListCard';
+
 import GridSpinner from './ui/GridSpinner';
+import PostListCard from './PostListCard';
 
 export default function PostList() {
 

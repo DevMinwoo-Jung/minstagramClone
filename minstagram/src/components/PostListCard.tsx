@@ -6,6 +6,7 @@ import ActionBar from './ActionBar';
 import CommentForm from './CommentForm';
 import ModalPortal from './ModalPortal';
 import Image from 'next/image';
+import PostModal from './PostModal';
 
 type Props = {
   post: SimplePost;
@@ -38,9 +39,9 @@ export default function PostListCard({post, priority = false}:Props) {
       {
         openModal && (
           <ModalPortal>
-            <div>
-              포스트 상세 페이지
-            </div>
+            <PostModal onClose={() => setOpenModal(false)}>
+              <p>포스트 상세 페이지</p>
+            </PostModal>
           </ModalPortal>
         )
       }
