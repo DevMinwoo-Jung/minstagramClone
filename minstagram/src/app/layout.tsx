@@ -31,6 +31,8 @@ export default function RootLayout({
             </SWRConfigContext>
           </main>
         </AuthContext>
+        {/* 여기에 portal 보여줄거임 */}
+        <div id='portal'/>
       </body>
     </html>
   )

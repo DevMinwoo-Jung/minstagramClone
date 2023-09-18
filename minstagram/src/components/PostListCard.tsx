@@ -1,12 +1,13 @@
 'use client'
-import { SimplePost } from '@/types/model/post'
-import React, { useState } from 'react'
 import Avatar from './ui/Avatar';
-import ActionBar from './ActionBar';
 import CommentForm from './CommentForm';
-import ModalPortal from './ModalPortal';
+import { SimplePost } from '@/types/model/post';
 import Image from 'next/image';
+import { useState } from 'react';
+import ActionBar from './ActionBar';
 import PostModal from './PostModal';
+import ModalPortal from './ModalPortal';
+
 
 type Props = {
   post: SimplePost;
@@ -21,14 +22,18 @@ export default function PostListCard({post, priority = false}:Props) {
   return (
     <article className='rounded-lg shadow-md border border-gray-200'>
       <div className='flex items-center p-2'>
-        <Avatar image={userImage} highlight/>
+        <Avatar image={userImage} size='medium' highlight />
         <span className='text-gray-900 font-bold ml-2'>{username}</span>
       </div>
-        <Image priority={priority} 
+      <Image
+        className='w-full object-cover aspect-square'
+        src={image}
+        alt={`photo by ${username}`}
+        width={500}
+        height={500}
+        priority={priority}
         onClick={() => setOpenModal(true)}
-        className='w-full object-cover aspect-square cursor-pointer' 
-        src={image!} 
-        alt={`photo by ${username}`} width={500} height={500}/>
+      />
       <ActionBar
         likes={likes}
         username={username}
@@ -36,15 +41,13 @@ export default function PostListCard({post, priority = false}:Props) {
         createdAt={createdAt}
       />
       <CommentForm />
-      {
-        openModal && (
-          <ModalPortal>
-            <PostModal onClose={() => setOpenModal(false)}>
-              <p>포스트 상세 페이지</p>
-            </PostModal>
-          </ModalPortal>
-        )
-      }
+      {openModal && (
+        <ModalPortal>
+          <PostModal onClose={() => setOpenModal(false)}>
+            <p>포스트 상세 페이지!!!</p>
+          </PostModal>
+        </ModalPortal>
+      )}
     </article>
   )
 }
