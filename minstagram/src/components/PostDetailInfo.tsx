@@ -2,7 +2,7 @@
 import React from 'react'
 import { SimplePost } from '@/types/model/post'
 import userSWR from 'swr';
-import PostDetail from './PostDetail';
+import PostDetail from './PostDetail-mine';
 
 type Props = {
   post: SimplePost;

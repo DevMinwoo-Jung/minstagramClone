@@ -4,21 +4,17 @@ import CommentForm from './CommentForm'
 import ActionBar from './ActionBar'
 import Avatar from './ui/Avatar'
 import Image from 'next/image'
-import { FullPost, SimplePost } from '@/types/model/post'
-import useSWR from 'swr'
+import { SimplePost } from '@/types/model/post'
 
 type Props = {
   post: SimplePost;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 export default function PostDetail({post, onClose}:Props) {
   
-  const { id, userImage, username, createdAt, likes, text, image } = post;
+  const { userImage, username, createdAt, likes, text, image } = post;
 
-  const { data } = useSWR<FullPost>(`/api/posts/${id}`)
-
-  const comments = data?.comments;
 
   return (
           <article className='rounded-lg shadow-md border border-gray-200 flex'>
