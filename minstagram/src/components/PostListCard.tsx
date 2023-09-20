@@ -7,7 +7,7 @@ import { useState } from 'react';
 import ActionBar from './ActionBar';
 import PostModal from './PostModal';
 import ModalPortal from './ModalPortal';
-import PostDetail from './PostDetail-mine';
+import PostDetail from './PostDetail';
 
 
 type Props = {
