@@ -8,6 +8,7 @@ import ActionBar from './ActionBar';
 import PostModal from './PostModal';
 import ModalPortal from './ModalPortal';
 import PostDetail from './PostDetail';
+import PostUserAvartar from './ui/PostUserAvartar';
 
 
 type Props = {
@@ -22,10 +23,7 @@ export default function PostListCard({post, priority = false}:Props) {
 
   return (
     <article className='rounded-lg shadow-md border border-gray-200'>
-      <div className='flex items-center p-2'>
-        <Avatar image={userImage} size='medium' highlight />
-        <span className='text-gray-900 font-bold ml-2'>{username}</span>
-      </div>
+      <PostUserAvartar image={userImage} username={username}/>
       <Image
         className='w-full object-cover aspect-square'
         src={image}
