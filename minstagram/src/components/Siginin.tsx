@@ -5,7 +5,7 @@ import ColorButton from './ui/ColorButton';
 
 type Props = {
   providers: Record<string, ClientSafeProvider>;
-  callbackUrl?: string;
+  callbackUrl: string;
 };
 export default function Signin({ providers, callbackUrl }: Props) {
   return (
@@ -14,7 +14,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
         <ColorButton
           key={id}
           text={`Sign In with ${name}`}
-          onClick={() => signIn(id, {callbackUrl})}
+          onClick={() => signIn(id, { callbackUrl })}
           size='big'
         />
       ))}

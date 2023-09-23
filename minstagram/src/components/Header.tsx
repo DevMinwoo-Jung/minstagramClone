@@ -32,36 +32,32 @@ const Header = () => {
 
   return (
     <div className='flex justify-between items-center px-6'>
-      <Link href={'/'}>
-        <h1 className='text-3xl font-bold'>Minstagram</h1>
+      <Link href='/'>
+        <h1 className='text-3xl font-bold'>Instantgram</h1>
       </Link>
       <nav>
         <ul className='flex gap-4 items-center p-4'>
-          {
-            menu.map((icon) => {
-              return (
-                <Link key={Math.random()} href={icon.href}>
-                  {
-                    pathName === icon.href ? icon.clcikedIcon : icon.icon
-                  }
-                </Link>
-              )        
-            })
-          }
-          {
-            user && 
+          {menu.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href}>
+                {pathName === item.href ? item.clcikedIcon : item.icon}
+              </Link>
+            </li>
+          ))}
+          {user && (
             <li>
               <Link href={`/user/${user.username}`}>
                 <Avatar image={user.image} size='small' highlight />
               </Link>
             </li>
-          }
-            <li>
-          {
-              session ? <ColorButton text='Sign out' onClick={() => signOut()} />
-              : <ColorButton text='Sign in' onClick={() => signIn()} />
-            }
-            </li>
+          )}
+          <li>
+            {session ? (
+              <ColorButton text='Sign out' onClick={() => signOut()} />
+            ) : (
+              <ColorButton text='Sign in' onClick={() => signIn()} />
+            )}
+          </li>
         </ul>
       </nav>
     </div>
