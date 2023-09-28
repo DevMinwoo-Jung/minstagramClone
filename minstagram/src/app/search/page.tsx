@@ -2,19 +2,24 @@
 import SearchBar from '@/components/SearchBar';
 import UserCard from '@/components/UserCard';
 import { DetailUser } from '@/types/model/user';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CgSearchLoading } from 'react-icons/cg';
 import useSWR from 'swr';
 
 const SearchPage = () => {
 
-  const {data: users, isLoading: loading} = useSWR<DetailUser[]>('/api/search');
+  const [param, setParam] = useState('');
 
+  const {data: users, isLoading: loading} = useSWR<DetailUser[]>(`/api/search/${param}`);
+
+  useEffect(()=> {
+
+  },[param])
 
   return (
     <section className='w-3/4 m-auto justify-center items-center'>
       <div className='m-auto'>
-        <SearchBar/>
+        <SearchBar setParam={setParam}/>
       </div>
       <div className='m-auto'>
         {
@@ -28,7 +33,7 @@ const SearchPage = () => {
 
             return (
               <>
-                <UserCard username={username} image={image!} name={name} followers={followers} following={following}/>  
+                <UserCard key={image} username={username} image={image!} name={name} followers={followers} following={following}/>  
               </>
             )
           })
