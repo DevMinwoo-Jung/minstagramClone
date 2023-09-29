@@ -14,13 +14,13 @@ export default function UserCard(user:Props) {
   const { username, image, name, followers, following } = user;
 
   return (
-    <div className='flex'>
+    <div className='flex rounded-lg border-2 mt-2 mb-2 p-2'>
       <Avatar image={image}/>
       <div className='ml-4'>
-          <p>{username}</p>
-          <p>{name}</p>
-          <span>{followers}followers</span>
-          <span>{following}following</span>
+          <p className='font-bold text-xl'>{username}</p>
+          <p className='mt-2 mb-2'>{name}</p>
+          <span className='text-gray-300 ml-2'>{(followers === null) ? 0 : followers} followers</span>
+          <span className='text-gray-300'>{(following === null) ? 0 : following} following</span>
       </div>
     </div>
   )

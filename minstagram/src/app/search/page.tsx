@@ -13,7 +13,7 @@ const SearchPage = () => {
   const {data: users, isLoading: loading} = useSWR<DetailUser[]>(`/api/search/${param}`);
 
   useEffect(()=> {
-
+    setParam(param)
   },[param])
 
   return (
@@ -28,14 +28,8 @@ const SearchPage = () => {
         {
           !loading && 
           users!.map((user)=> {
-
             const { username, image, name, followers, following } = user;
-
-            return (
-              <>
-                <UserCard key={image} username={username} image={image!} name={name} followers={followers} following={following}/>  
-              </>
-            )
+            return  <UserCard key={image} username={username} image={image!} name={name} followers={followers} following={following}/>  
           })
         }
       </div>
