@@ -3,7 +3,7 @@ import SearchBar from '@/components/SearchBar';
 import UserCard from '@/components/UserCard';
 import { DetailUser } from '@/types/model/user';
 import React, { useEffect, useState } from 'react'
-import { CgSearchLoading } from 'react-icons/cg';
+import { PropagateLoader } from 'react-spinners';
 import useSWR from 'swr';
 
 const SearchPage = () => {
@@ -23,7 +23,7 @@ const SearchPage = () => {
       </div>
       <div className='m-auto'>
         {
-          loading  && <CgSearchLoading/>
+          loading  && ( <PropagateLoader size={8} color='red'/> )
         }
         {
           !loading && 
