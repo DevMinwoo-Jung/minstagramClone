@@ -1,5 +1,6 @@
 'use client'
 import UserCardc from '@/components/UserCardc';
+import useDebounce from '@/components/debounce';
 import { DetailUser, ProfileUser } from '@/types/model/user';
 import React, { FormEvent, useEffect, useState } from 'react'
 import { PropagateLoader } from 'react-spinners';
@@ -7,9 +8,15 @@ import useSWR from 'swr';
 
 const SearchPage = () => {
 
+
   const [param, setParam] = useState('');
 
-  const {data: users, isLoading: loading, error} = useSWR<ProfileUser[]>(`/api/search/${param}`);
+  const debouncedSearch = useDebounce(param, 1000);
+  const {data: users, isLoading: loading, error} = useSWR<ProfileUser[]>(
+      () => debouncedSearch ? `/api/search/${param}` : `/api/search/`
+    );
+
+    console.log(users)
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -37,3 +44,5 @@ const SearchPage = () => {
 }
 
 export default SearchPage
+
+
