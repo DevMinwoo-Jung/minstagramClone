@@ -16,8 +16,6 @@ const SearchPage = () => {
       () => debouncedSearch ? `/api/search/${param}` : `/api/search/`
     );
 
-    console.log(users)
-
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
   }
