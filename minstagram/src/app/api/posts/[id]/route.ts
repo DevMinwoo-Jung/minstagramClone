@@ -16,7 +16,6 @@ export async function GET(request: Request, context: Context) {
     return new Response('Auth Error', { status: 401 })
   }
 
-  console.log(context)
 
   if (!context) {
     return new Response("Missing postId parameter", { status: 400 });

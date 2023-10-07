@@ -13,7 +13,11 @@ export type DetailUser = User & {
   bookmarks: string[];
 }
 
-export type UserSearchResult = User & {
+export type ProfileUser = User & {
   following: number;
   followers: number;
 }
+
+export type UserProfile = ProfileUser & {
+  posts: number;
+};
