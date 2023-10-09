@@ -64,8 +64,8 @@ export async function getUserForProfile(username: string) {
     )
     .then((user) => ({
       ...user,
-      following: user.following ?? 0,
-      followers: user.followers ?? 0,
-      posts: user.posts ?? 0,
+      following: user.following == null ? 0 : user.following,
+      followers: user.followers == null ? 0 : user.followers,
+      posts: user.posts == null ? 0 : user.posts,
     }));
 }

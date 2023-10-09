@@ -1,5 +1,6 @@
 import { UserProfile } from "@/types/model/user";
 import Avatar from "./ui/Avatar";
+import FollowButton from "./FollowButton";
 
 type Props = {
   user: UserProfile;
@@ -11,7 +12,7 @@ export default function UserProfile({ user }: Props) {
         <Avatar size="large" image={user.image}/>
       </div>
       <div className="block mb-4 mt-4">
-        <p>{user.username}</p>
+        <p>{user.username} <FollowButton username={user.username}/></p>
         <div>
           <span className="pr-2">
             <span className="font-semibold">
