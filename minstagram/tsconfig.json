@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.jsx", "src/app/user/getAllUser.jsrc/asrc/app/user/getAllUser.js
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.jsx", "src/app/user/getAllUser.jsrc/asrc/app/user/getAllUser.jsx"],
   "exclude": ["node_modules"]
 }
