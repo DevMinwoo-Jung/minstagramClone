@@ -9,11 +9,11 @@ export default function PostSaveLike() {
   const tags = [ 'POST', 'SAVE', 'LIKED'];
   
   return (
-    <div className='flex m-auto justify-center'>
+    <div className='flex m-auto justify-center mt-6'>
       {
         icons.map((icon, index) => { 
           return (
-            <div className='mr-12 flex' key={tags[index]}>
+            <div className='mr-12 flex cursor-pointer' key={tags[index]}>
               <span className='w-10'>{icon}</span>
               <span>{tags[index]}</span>
             </div>
