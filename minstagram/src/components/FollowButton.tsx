@@ -1,10 +1,11 @@
 'use client'
 import React from 'react'
-import { DetailUser } from '@/types/model/user';
+import { DetailUser, ProfileUser } from '@/types/model/user';
 import useSWR from 'swr';
+import Button from './ui/Button';
 
 type Props = {
-  username: string;
+  user: ProfileUser;
 }
 
 const fetcher = async (url:string) => {
@@ -12,21 +13,19 @@ const fetcher = async (url:string) => {
   return res.json();
 };
 
-export default function FollowButton(props:Props) {
+export default function FollowButton({user}: Props) {
 
-  const { username } = props;
+  const { username } = user;
+  const { data: loggedInUser } = useSWR<DetailUser>('/api/me', fetcher);
 
-  const { data, isLoading, error } = useSWR<DetailUser>('/api/me', fetcher);
-
-  const result = data?.following.some((user) => user.username === username)
-
+  const showButton = loggedInUser && loggedInUser.username !== username
+  const following = loggedInUser && loggedInUser.following.find(item => item.username === username);  
   
+  const text = following? 'Unfollow' : 'Follow';
+
   return (
     <>
-      {
-        result ? <button className='ml-6 w-28 bg-red-500 text-white p-1 pl-2 pr-2 rounded-lg'>Unfollow</button>
-        : <button className='ml-6  w-28 bg-blue-500 text-white p-1 pl-2 pr-2 rounded-lg'>Follow</button>
-      }  
+      {showButton && <Button text={text} onClick={()=>{}} red={text === 'Unfollow'}></Button>}
     </>
   )
 }
