@@ -22,7 +22,7 @@ export default async function UserPage({ params: { username } }: Props) {
   return (
     <section className='block w-3/4 h-full'>
       <UserProfile user={user} />
-      <UserPosts post={post} />
+      <UserPosts user={user} />
     </section>
   );
 }
